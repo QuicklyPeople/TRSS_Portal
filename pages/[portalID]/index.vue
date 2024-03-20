@@ -113,13 +113,12 @@ watch(
     if (newValue?.volume != oldValue?.volume) {
       videoRef.value.volume = newValue?.volume;
     }
-    if (newValue?.played != oldValue?.played) {
+    if (newValue?.played != videoRef.value.played) {
       newValue?.played ? videoRef.value.play() : videoRef.value.pause();
     }
-    // if (newValue != oldValue) {
+    // if (newValue?.muted != videoRef.value.muted) {
     //   setTimeout(() => {
     //     videoRef.value.muted = newValue?.muted;
-    //     console.log("静音播放更改了");
     //   }, 150);
     // }
   },
@@ -135,9 +134,10 @@ watch(
       align-items: center;
       justify-content: center;
       height: 100vh;
+      width: 100vw;
     "
   >
-    <qrcode-vue :value="qrCode" style="width: 20rem; height: auto" />
+    <qrcode-vue :value="qrCode" style="width: auto; height: 20vh" />
   </div>
   <div class="bgcolor" v-else>
     <div v-if="isVideo">
@@ -145,8 +145,8 @@ watch(
         :src="playPath"
         class="video"
         autoplay
-        playsinline
         muted
+        playsinline
         ref="videoRef"
       >
         <source :src="playPath" type="video/webm" />
