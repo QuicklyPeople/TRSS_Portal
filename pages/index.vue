@@ -43,19 +43,22 @@ let isImg = computed(() => {
   return imgSuffix.some((suffix) => playPath.value.endsWith(suffix));
 });
 let waitState = computed(() => {
+  return state.value?.currentSrc === "" ? true : false;
+});
+let isHome = computed(() => {
   return state.value === null ? true : false;
 });
-// 创建定时器，每秒调用一次 fetchData 函数
-// onMounted(() => {
-//   //videoRef.value.style.height = `${window.innerHeight}px`;
-//   //videoRef.value.style.width = `${window.innerWidth}px`;
-//   removeStatus();
-//   setInterval(() => {
-//     // 执行定时任务的代码
-//     getMediaStatus();
-//     //console.log(playPath.value);
-//   }, 1000);
-// });
+//创建定时器，每秒调用一次 fetchData 函数
+onMounted(() => {
+  //videoRef.value.style.height = `${window.innerHeight}px`;
+  //videoRef.value.style.width = `${window.innerWidth}px`;
+  //removeStatus();
+  setInterval(() => {
+    // 执行定时任务的代码
+    getMediaStatus();
+    //console.log(playPath.value);
+  }, 1000);
+});
 async function removeStatus() {
   const baseUrl = useRuntimeConfig().public.apiBase;
   const uri = `MediaState/RemoveMediaState?portalid=${"asd"}`;
@@ -68,7 +71,7 @@ async function removeStatus() {
 }
 async function getMediaStatus() {
   const baseUrl = useRuntimeConfig().public.apiBase;
-  const uri = `MediaState/GetMediaState?portalid=${portalID.value}`;
+  const uri = `MediaState/GetMediaState`;
   await $fetch(baseUrl + uri, {
     // 请求失败的回调函数
     onRequestError({ error }) {
@@ -125,11 +128,10 @@ watch(
   },
   { deep: true }
 );
-
-let isShowQrCode = ref<boolean>(true);
 </script>
 <template>
   <div
+    v-if="waitState"
     style="
       display: flex;
       justify-content: center;
@@ -282,7 +284,7 @@ let isShowQrCode = ref<boolean>(true);
       </div>
     </div>
   </div>
-  <!-- <div class="bgcolor" v-else>
+  <div class="bgcolor" v-else>
     <div v-if="isVideo">
       <video
         :src="playPath"
@@ -303,13 +305,13 @@ let isShowQrCode = ref<boolean>(true);
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 100vh;
+          height: 94vh;
         "
       >
-        已识别，等待进入
+        识别到{{ state?.currentSrc }}
       </h1>
     </div>
-  </div> -->
+  </div>
 </template>
 <style scoped>
 .bgcolor {
