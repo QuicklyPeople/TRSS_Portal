@@ -360,8 +360,8 @@ watch(
   padding: 5px;
 }
 .div-class2 {
-  padding: 4px;
-  margin: 5px;
+  padding: 5px;
+  margin: 8px;
   background: linear-gradient(135deg, #c850c0, #4158d0);
   color: rgb(255, 255, 255);
   text-align: center;
@@ -370,7 +370,7 @@ watch(
 }
 .div-class3 {
   padding: 5px;
-  margin: 5px;
+  margin: 8px;
   background-color: #21c2e4;
   background: linear-gradient(135deg, #ff00cc, #ffcc00, #00ffcc, #ff0066);
   text-align: center;
