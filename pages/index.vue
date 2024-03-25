@@ -140,54 +140,41 @@ watch(
     "
   >
     <div
-      style="display: flex; flex-direction: column; height: 100%; width: 80%"
+      style="display: flex; flex-direction: column; height: 100%; width: 100%"
     >
       <div
         style="
           text-align: center;
-          background: linear-gradient(135deg, #c850c0, #4158d0);
+          background: #4158d0;
           color: white;
           font-size: 40px;
-          margin: 2px;
-          padding: 2px;
         "
       >
         同日集团
       </div>
-      <div
-        style="
-          text-align: center;
-          color: #1e32dc;
-          font-size: 25px;
-          padding-top: 6px;
-          padding-bottom: 6px;
-          font-weight: bold;
-        "
-      >
-        同日中国-智能板块
+      <div Class="MudCardHeader py-1">
+        <h2 style="color: steelblue">同日中国-智能板块</h2>
       </div>
-      <div class="div-class">
+      <div Class="MudCardContent pt-3 px-2 pv-2">
         <div style="display: flex; justify-content: space-around">
-          <div style="display: flex; justify-content: space-around">
+          <div
+            style="
+              display: flex;
+              justify-content: space-around;
+              flex-basis: 20%;
+            "
+          >
             <div></div>
             <div
               style="
-                width: 200px;
-                border-radius: 5px;
-                background: linear-gradient(
-                  135deg,
-                  #ff00cc,
-                  #ffcc00,
-                  #00ffcc,
-                  #ff0066
-                );
+                width: 50px;
+                border-radius: 3rem;
+                background: linear-gradient(105deg, green, #41b030);
                 color: black; /* 字体颜色为白色 */
                 writing-mode: vertical-lr; /* 字竖着排列 */
                 text-orientation: upright; /* 保持文字正向 */
                 padding: 5px;
                 text-align: center;
-                flex-basis: 20%;
-                box-shadow: 5px 5px 5px #191818;
                 letter-spacing: 10px;
                 font-size: 18px;
                 display: flex;
@@ -216,30 +203,23 @@ watch(
           <div style="display: flex; flex-direction: column; flex-basis: 20%">
             <div class="div-class3">华北区</div>
             <div class="div-class3">华中区</div>
+            <div class="div-class3">西南区</div>
           </div>
           <div style="display: flex; flex-direction: column; flex-basis: 30%">
             <div class="div-class2">青岛孚鼎泰</div>
             <div class="div-class2">安徽同日智能技术</div>
-          </div>
-          <div style="display: flex; flex-direction: column; flex-basis: 30%">
-            <div class="div-class3">西南区</div>
             <div class="div-class2">成都同日晟川工业</div>
           </div>
+          <div
+            style="display: flex; flex-direction: column; flex-basis: 30%"
+          ></div>
         </div>
       </div>
-      <div
-        style="
-          text-align: center;
-          color: #1e32dc;
-          font-size: 25px;
-          padding-top: 6px;
-          padding-bottom: 6px;
-          font-weight: bold;
-        "
-      >
-        同日新加坡·自动化设备
+
+      <div Class="MudCardHeader py-1">
+        <h2 style="color: steelblue">同日新加坡·自动化设备</h2>
       </div>
-      <div style="display: flex; flex-direction: column" class="div-class">
+      <div Class="MudCardContent pt-3 px-2 pv-2">
         <div style="display: flex; justify-content: space-around">
           <div class="div-class3" style="flex-basis: 20%">新加坡</div>
           <div class="div-class2" style="flex-basis: 30%">SINGAPORE PTE</div>
@@ -258,19 +238,11 @@ watch(
           <div class="div-class2" style="flex-basis: 30%">青岛同日机电</div>
         </div>
       </div>
-      <div
-        style="
-          text-align: center;
-          color: #1e32dc;
-          font-size: 25px;
-          padding-top: 6px;
-          padding-bottom: 6px;
-          font-weight: bold;
-        "
-      >
-        同日中国·农业板块
+
+      <div Class="MudCardHeader py-1">
+        <h2 style="color: steelblue">同日中国·农业板块</h2>
       </div>
-      <div style="display: flex; flex-direction: column" class="div-class">
+      <div Class="MudCardContent pt-3 px-2 pv-2">
         <div style="display: flex; justify-content: space-around">
           <div class="div-class3" style="flex-basis: 20%">商贸</div>
           <div class="div-class2" style="flex-basis: 30%">青岛同日商贸</div>
@@ -361,8 +333,8 @@ watch(
 }
 .div-class2 {
   padding: 5px;
-  margin: 8px;
-  background: linear-gradient(135deg, #c850c0, #4158d0);
+  margin: 7px;
+  background: linear-gradient(135deg, #6299b0, #12668ccc);
   color: rgb(255, 255, 255);
   text-align: center;
   border-radius: 5px;
@@ -370,14 +342,27 @@ watch(
 }
 .div-class3 {
   padding: 5px;
-  margin: 8px;
+  margin: 7px;
   background-color: #21c2e4;
-  background: linear-gradient(135deg, #ff00cc, #ffcc00, #00ffcc, #ff0066);
+  border-radius: 3rem;
+  background: linear-gradient(105deg, green, #41b030);
+
   text-align: center;
-  box-shadow: 5px 5px 5px #191818;
   letter-spacing: 10px;
   font-size: 20px;
-  border-radius: 5px;
   font-weight: bold;
+}
+
+.MudCardHeader {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.MudCardContent {
+  background: linear-gradient(135deg, #b8cedf, #0166b35b);
+  border-top-left-radius: 1.75rem;
+  border-top-right-radius: 1.75rem;
+  padding-top: 2rem;
 }
 </style>
