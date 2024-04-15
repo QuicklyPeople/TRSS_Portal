@@ -197,6 +197,16 @@ let company = ref([
       height: 100%;
     "
   >
+    <div>
+      <!-- <div>
+        <img style="top: 0" class="firstPageClass" src="/6.png" />
+      </div>
+      <div>
+        <img style="bottom: 0" class="firstPageClass" src="/新加坡logo.png" />
+      </div> -->
+      <img class="imgClass" src="/同日集团2.png" />
+    </div>
+    <!--
     <div
       style="display: flex; flex-direction: column; height: 100%; width: 100%"
     >
@@ -313,7 +323,7 @@ let company = ref([
         </div>
       </div>
     </div>
-  </div>
+  --></div>
   <div class="bgcolor" v-else>
     <div v-if="isVideo">
       <video :src="playPath" class="video" autoplay playsinline ref="videoRef">
@@ -350,6 +360,14 @@ let company = ref([
   align-items: center;
   text-align: center;
   background-color: coral;
+}
+.firstPageClass {
+  z-index: 1000;
+  position: fixed;
+  object-fit: contain; /* 保持图片比例同时填充 */
+  width: 100vw; /* 宽度铺满整个视口 */
+  height: 50vh; /* 高度铺满整个视口 */
+  left: 0; /* 图片左侧对齐 */
 }
 .imgClass {
   z-index: 1000;
