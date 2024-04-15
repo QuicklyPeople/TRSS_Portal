@@ -128,6 +128,64 @@ watch(
   },
   { deep: true }
 );
+let company = ref([
+  {
+    name: "安徽同日",
+    img: "2.jpg",
+  },
+  {
+    name: "成都同日",
+    img: "3.jpg",
+  },
+  {
+    name: "昆山同日机器人",
+    img: "0.jpg",
+  },
+  {
+    name: "昆山同日自动化",
+    img: "0.jpg",
+  },
+  {
+    name: "昆山同日研究院",
+    img: "0.jpg",
+  },
+  {
+    name: "同日云联",
+    img: "0.jpg",
+  },
+  {
+    name: "同日智能技术",
+    img: "0.jpg",
+  },
+  {
+    name: "青岛孚鼎泰",
+    img: "1.jpg",
+  },
+  {
+    name: "青岛同日机电",
+    img: "1.jpg",
+  },
+  {
+    name: "青岛同日商贸",
+    img: "1.jpg",
+  },
+  {
+    name: "青岛同日食品",
+    img: "1.jpg",
+  },
+  {
+    name: "青岛同日智能",
+    img: "1.jpg",
+  },
+  {
+    name: "深圳同日自动化",
+    img: "5.jpg",
+  },
+  {
+    name: "新加坡公司",
+    img: "4.jpg",
+  },
+]);
 </script>
 <template>
   <div
@@ -258,21 +316,14 @@ watch(
   </div>
   <div class="bgcolor" v-else>
     <div v-if="isVideo">
-      <video
-        :src="playPath"
-        class="video"
-        autoplay
-        playsinline
-        muted
-        ref="videoRef"
-      >
+      <video :src="playPath" class="video" autoplay playsinline ref="videoRef">
         <source :src="playPath" type="video/webm" />
         <source :src="playPath" type="video/mp4" />
       </video>
     </div>
     <div v-else-if="isImg"><img class="imgClass" :src="playPath" /></div>
     <div v-else>
-      <h1
+      <!-- <h1
         style="
           display: flex;
           align-items: center;
@@ -281,7 +332,14 @@ watch(
         "
       >
         识别到{{ state?.currentSrc }}
-      </h1>
+      </h1> -->
+      <div v-for="(item, index) in company" :key="index">
+        <img
+          v-if="state?.currentSrc === item.name"
+          class="fullScreenImg"
+          :src="item.img"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -305,7 +363,6 @@ watch(
 .video {
   z-index: 1000;
   position: fixed;
-
   top: 50%;
   left: 50%;
   min-width: 50%;
@@ -364,5 +421,13 @@ watch(
   border-top-left-radius: 1.75rem;
   border-top-right-radius: 1.75rem;
   padding-top: 2rem;
+}
+.fullScreenImg {
+  width: 100%; /* 视口宽度 */
+  height: 100%; /* 视口高度 */
+  object-fit: cover; /* 覆盖整个容器，可能会被裁剪 */
+  position: absolute; /* 绝对定位 */
+  top: 0;
+  left: 0;
 }
 </style>
