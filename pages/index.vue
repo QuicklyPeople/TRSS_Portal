@@ -36,6 +36,10 @@ let playPath = computed(() => {
   const uri = useRuntimeConfig().public.playUri;
   return `${uri}${state.value?.currentSrc}`;
 });
+let firstPagePath = computed(() => {
+  const uri = useRuntimeConfig().public.playUri;
+  return `${uri}` + "同日公司图片/02版视频.mp4";
+});
 let isVideo = computed(() => {
   return videoSuffix.some((suffix) => playPath.value.endsWith(suffix));
 });
@@ -44,9 +48,6 @@ let isImg = computed(() => {
 });
 let waitState = computed(() => {
   return state.value?.currentSrc === "" ? true : false;
-});
-let isHome = computed(() => {
-  return state.value === null ? true : false;
 });
 //创建定时器，每秒调用一次 fetchData 函数
 onMounted(() => {
@@ -131,59 +132,59 @@ watch(
 let company = ref([
   {
     name: "安徽同日",
-    img: "2.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/2.jpg",
   },
   {
-    name: "成都同日",
-    img: "3.jpg",
+    name: "成都同日晟川",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/3.jpg",
   },
   {
     name: "昆山同日机器人",
-    img: "0.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/0.jpg",
   },
   {
     name: "昆山同日自动化",
-    img: "0.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/0.jpg",
   },
   {
-    name: "昆山同日研究院",
-    img: "0.jpg",
+    name: "同日研究院",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/0.jpg",
   },
   {
     name: "同日云联",
-    img: "0.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/0.jpg",
   },
   {
     name: "同日智能技术",
-    img: "0.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/0.jpg",
   },
   {
     name: "青岛孚鼎泰",
-    img: "1.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/1.jpg",
   },
   {
     name: "青岛同日机电",
-    img: "1.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/1.jpg",
   },
   {
     name: "青岛同日商贸",
-    img: "1.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/1.jpg",
   },
   {
     name: "青岛同日食品",
-    img: "1.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/1.jpg",
   },
   {
     name: "青岛同日智能",
-    img: "1.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/1.jpg",
   },
   {
     name: "深圳同日自动化",
-    img: "5.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/5.jpg",
   },
   {
     name: "新加坡公司",
-    img: "4.jpg",
+    img: `${useRuntimeConfig().public.playUri}` + "同日公司图片/4.jpg",
   },
 ]);
 </script>
@@ -198,13 +199,18 @@ let company = ref([
     "
   >
     <div>
-      <!-- <div>
-        <img style="top: 0" class="firstPageClass" src="/6.png" />
-      </div>
-      <div>
-        <img style="bottom: 0" class="firstPageClass" src="/新加坡logo.png" />
-      </div> -->
-      <img class="imgClass" src="/同日集团2.png" />
+      //公司首页视频
+      <video
+        :src="firstPagePath"
+        class="video"
+        autoplay
+        playsinline
+        ref="videoRef"
+        loop="true"
+        muted="true"
+      >
+        <source :src="playPath" type="video/mp4" />
+      </video>
     </div>
     <!--
     <div
@@ -331,7 +337,7 @@ let company = ref([
         <source :src="playPath" type="video/mp4" />
       </video>
     </div>
-    <div v-else-if="isImg"><img class="imgClass" :src="playPath" /></div>
+    <div v-else-if="isImg"><img class="fullScreenImg" :src="playPath" /></div>
     <div v-else>
       <!-- <h1
         style="
@@ -443,7 +449,7 @@ let company = ref([
 .fullScreenImg {
   width: 100%; /* 视口宽度 */
   height: 100%; /* 视口高度 */
-  object-fit: cover; /* 覆盖整个容器，可能会被裁剪 */
+  object-fit: fill; /* 覆盖整个容器，可能会被裁剪 */
   position: absolute; /* 绝对定位 */
   top: 0;
   left: 0;
